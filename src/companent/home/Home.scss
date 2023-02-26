@@ -1,18 +1,43 @@
-.home{
+.home {
+  width: 100%;
+  height: auto;
+  &-wrapper {
     width: 100%;
-    height: auto;
-    &-wrapper{
-        width: 100%;
-        padding: 64px 0;
+    padding: 64px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+  &-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    font-weight: 700;
+    &__t {
+      color: rgb(103, 183, 214);
     }
-    &-logo{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 40px;
-        font-weight: 700;
-        &__t{
-            color: rgb(103, 183, 214);
-        }
+    &__o {
+      color: rgb(179, 65, 88);
     }
+    &__d {
+      color: rgb(98, 202, 69);
+    }
+    &__oo {
+      color: rgb(146, 62, 192);
+    }
+  }
+  &-title{
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 150%;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    opacity: 90%;
+  }
+  &-footer{
+    background-color: aqua;
+  }
 }

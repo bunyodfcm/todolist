@@ -1,0 +1,76 @@
+.list {
+  width: 100%;
+  height: auto;
+  background-color: var(--yellow-color);
+  border-radius: 4px;
+  padding: 20px 16px;
+  @media (max-width: 640px) {
+    padding: 12px;
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    @media (max-width: 640px) {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    &__icon {
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      @media (max-width: 640px) {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  &-body {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    @media (max-width: 640px) {
+    }
+  }
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      span {
+        width: 24px;
+        height: 24px;
+        background-color: red;
+        border-radius: 50%;
+      }
+    }
+    &__right {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+
+      input[type="checkbox"] {
+        display: none;
+      }
+      span {
+        height: 18px;
+        width: 18px;
+        border: 1px solid var(--primary-color);
+        display: inline-block;
+        border-radius: 4px;
+        position: relative;
+      }
+      [type="checkbox"]:checked + span:before {
+        content: "\2714";
+        position: absolute;
+        top: -3px;
+        left: 1px;
+      }
+    }
+  }
+}

@@ -18,11 +18,11 @@ const List = () => {
           <span></span>
           <span></span>
         </div>
-        <div className="list-footer__right">
+        <label className="list-footer__right">
           <input type="checkbox" />
           <span></span>
           Done
-        </div>
+        </label>
       </div>
     </div>
   );

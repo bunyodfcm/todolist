@@ -42,10 +42,9 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      span {
+      .salom {
         width: 24px;
         height: 24px;
-        background-color: red;
         border-radius: 50%;
       }
     }

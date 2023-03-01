@@ -1,22 +1,33 @@
 import React from "react";
 import "./List.scss";
 import EllipsisHorizontalIcon from "../../assets/companent-icon/EllipsisHorizontalIcon";
+import { JobsData } from "../../utilist/data";
 
-const List = () => {
+const List = (props) => {
+  const selectItem = (id, arr) => {
+    const selectObj = arr.find((el) => el.id === id);
+    return selectObj.color;
+  };
+
   return (
     <div className="list">
       <div className="list-header">
-        <p>Downlond todo lisy</p>
+        <p>{props.title}</p>
         <EllipsisHorizontalIcon className="list-header__icon" />
       </div>
       <div className="list-body">
-        <p>the first step forbetter life</p>
+        <p>{props.text}</p>
       </div>
       <div className="list-footer">
         <div className="list-footer__left">
-          <span></span>
-          <span></span>
-          <span></span>
+          {props.JobsDataId.map((item) => (
+            <span
+              className="salom"
+              key={item.id}
+              style={{ backgroundColor: selectItem(item, JobsData) }}
+            >
+            </span>
+          ))}
         </div>
         <label className="list-footer__right">
           <input type="checkbox" />

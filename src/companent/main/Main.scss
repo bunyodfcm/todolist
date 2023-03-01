@@ -43,5 +43,10 @@
   }
   &-content {
     width: 100%;
+    padding: 20px 0;
+    display: grid;
+    row-gap: 12px;
+    column-gap: 2%;
+    grid-template-columns: 49% 49%;
   }
 }

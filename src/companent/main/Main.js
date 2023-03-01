@@ -4,8 +4,6 @@ import List from "../list/List";
 import "./Main.scss";
 import Saidbar from "./sidebar/Sidebar";
 const Main = () => {
-    let main = document.getElementById('main-header')
-    console.log(main);
   return (
     <div className="main">
       <div className="container">

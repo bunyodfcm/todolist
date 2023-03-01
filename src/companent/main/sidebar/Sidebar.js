@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { SidebarData } from "../../../utilist/data";
 import "./Sidebar.scss";
 
 const Saidbar = () => {
-  console.log(SidebarData);
+  const [labelChange, setlabelBgChange] = useState(true);
+  const labelBgChange = () => {
+    console.log("a");
+  };
   return (
     <div className="sidebar">
       {SidebarData.map((data) => (
-        <label className="sidebar-label">
+        <label className="sidebar-label" key={data.id}>
           <input type="checkbox" />
-          <span style={{backgroundColor: data.color }}></span>
+          <span style={{ backgroundColor: data.color }}></span>
           {data.name}
         </label>
       ))}

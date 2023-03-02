@@ -62,18 +62,26 @@
     margin-bottom: 20px;
     resize: none;
   }
+  &__checkboxes {
+    display: flex;
+    gap: 12px;
+  }
   &__checkbox {
     display: flex !important;
     align-items: center;
     gap: 6px;
-    &::before{
-        content: '';
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: aqua;
-        top: 2px;
+    input[type="checkbox"] {
+      display: none;
     }
-}
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: aqua;
+    
+      top: 2px;
+    }
+  }
 }

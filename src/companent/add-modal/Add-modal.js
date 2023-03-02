@@ -1,4 +1,5 @@
 import React from "react";
+import { JobsData } from "../../utilist/data";
 import "./Add-modal.scss";
 const AddModal = ({ onClose }) => {
   const handly = () => {
@@ -30,12 +31,15 @@ const AddModal = ({ onClose }) => {
           className="add-modal__textarea"
           placeholder="New description"
         ></textarea>
-        <label >Tags</label>
-        <div>
+        <label>Tags</label>
+        <div className="add-modal__checkboxes">
+          {JobsData.map((item) => (
             <label className="add-modal__checkbox">
-                <input type="checkbox" />
-                work
+              <input type="checkbox" />
+              <span></span>
+              {item.name}
             </label>
+          ))}
         </div>
       </form>
     </div>

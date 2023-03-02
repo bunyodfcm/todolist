@@ -20,10 +20,10 @@ const List = (props) => {
       </div>
       <div className="list-footer">
         <div className="list-footer__left">
-          {props.JobsDataId.map((item) => (
+          {props.JobsDataId.map((item,index) => (
             <span
               className="salom"
-              key={item.id}
+              key={index}
               style={{ backgroundColor: selectItem(item, JobsData) }}
             >
             </span>

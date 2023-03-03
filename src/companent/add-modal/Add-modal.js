@@ -5,6 +5,9 @@ const AddModal = ({ onClose }) => {
   const handly = () => {
     onClose();
   };
+  const addBgColor= ()=>{
+    
+  }
   return (
     <div className="add-modal" onClick={handly}>
       <form className="add-modal__body" onClick={(e) => e.stopPropagation()}>
@@ -16,7 +19,7 @@ const AddModal = ({ onClose }) => {
             Add
           </button>
         </div>
-        <label htmlFor="add-modal__title">Title</label>
+        <label htmlFor="add-modal__title" className="add-modal__label">Title</label>
         <br />
         <input
           type="text"
@@ -24,19 +27,19 @@ const AddModal = ({ onClose }) => {
           className="add-modal__title"
           placeholder="New title"
         />
-        <label htmlFor="add-modal__textarea">Description</label>
+        <label htmlFor="add-modal__textarea" className="add-modal__label">Description</label>
         <br />
         <textarea
           id="add-modal__textarea"
           className="add-modal__textarea"
           placeholder="New description"
         ></textarea>
-        <label>Tags</label>
+        <label className="add-modal__label">Tags</label>
         <div className="add-modal__checkboxes">
           {JobsData.map((item) => (
-            <label className="add-modal__checkbox">
+            <label className="add-modal__checkbox" onClick={addBgColor}>
               <input type="checkbox" />
-              <span></span>
+              <span style={{backgroundColor: item.color}}></span>
               {item.name}
             </label>
           ))}

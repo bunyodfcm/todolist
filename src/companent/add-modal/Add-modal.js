@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import { JobsData } from "../../utilist/data";
+import WorkBtn from "../works-btn/Work-btn";
 import "./Add-modal.scss";
 const AddModal = ({ onClose }) => {
+  const a = useRef();
   const handly = () => {
     onClose();
   };
-  const addBgColor= ()=>{
-    
-  }
+  const addBgColor = () => {
+    // console.log(a.current.classList.add("checkbox-bg"));
+    console.log(a);
+  };
   return (
     <div className="add-modal" onClick={handly}>
       <form className="add-modal__body" onClick={(e) => e.stopPropagation()}>
@@ -19,7 +22,9 @@ const AddModal = ({ onClose }) => {
             Add
           </button>
         </div>
-        <label htmlFor="add-modal__title" className="add-modal__label">Title</label>
+        <label htmlFor="add-modal__title" className="add-modal__label">
+          Title
+        </label>
         <br />
         <input
           type="text"
@@ -27,7 +32,9 @@ const AddModal = ({ onClose }) => {
           className="add-modal__title"
           placeholder="New title"
         />
-        <label htmlFor="add-modal__textarea" className="add-modal__label">Description</label>
+        <label htmlFor="add-modal__textarea" className="add-modal__label">
+          Description
+        </label>
         <br />
         <textarea
           id="add-modal__textarea"
@@ -36,12 +43,8 @@ const AddModal = ({ onClose }) => {
         ></textarea>
         <label className="add-modal__label">Tags</label>
         <div className="add-modal__checkboxes">
-          {JobsData.map((item) => (
-            <label className="add-modal__checkbox" onClick={addBgColor}>
-              <input type="checkbox" />
-              <span style={{backgroundColor: item.color}}></span>
-              {item.name}
-            </label>
+          {JobsData.map((item, index) => (
+            <WorkBtn name = {item.name} color={item.color} key={index} />
           ))}
         </div>
       </form>

@@ -1,20 +1,13 @@
 import React, { useState } from "react";
 import { JobsData } from "../../../utilist/data";
+import WorkBtn from "../../works-btn/Work-btn";
 import "./Sidebar.scss";
 
 const Saidbar = () => {
-  const [labelChange, setlabelBgChange] = useState(true);
-  const labelBgChange = (e) => {
-    console.log(e.target.value);
-  };
   return (
     <div className="sidebar">
-      {JobsData.map((data) => (
-        <label className="sidebar-label" onClick={labelBgChange} key={data.id}>
-          <input type="checkbox" />
-          <span style={{ backgroundColor: data.color }}></span>
-          {data.name}
-        </label>
+      {JobsData.map((data, index) => (
+        <WorkBtn name={data.name} color={data.color} key={index} />
       ))}
       <div className="hide-element">
         <input type="checkbox" id="hide-element" />

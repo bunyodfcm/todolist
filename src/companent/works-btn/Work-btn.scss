@@ -1,0 +1,23 @@
+.add-modal {
+  &__checkbox {
+    padding: 6px 12px;
+        display: flex;
+    align-items: center;
+    gap: 6px;
+    input[type="checkbox"] {
+      display: none;
+    }
+    span {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: aqua;
+      top: 2px;
+    }
+  }
+}
+.checkbox-bg {
+  background-color: #f5f5f5;
+  border-radius: 12px;
+}

@@ -5,7 +5,7 @@ const WorkBtn = (props) => {
   // const [] = props
   return (
     <label
-      className="add-modal__checkbox"
+      className="add-modal__checkbox checkbox-bg"
       // key={p}
       // ref={a}
       // onClick={addBgColor}

@@ -1,0 +1,27 @@
+.list-edit {
+  width: 120px;
+  background-color: var(--white-color);
+  padding: 15px;
+  position: absolute;
+  right: 20px;
+  bottom: -60px;
+  border: 1px solid #b2afa133;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    opacity: 60%;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

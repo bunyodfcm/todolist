@@ -1,7 +1,7 @@
 .add-modal {
   &__checkbox {
     padding: 6px 12px;
-        display: flex;
+    display: flex;
     align-items: center;
     gap: 6px;
     input[type="checkbox"] {
@@ -9,10 +9,11 @@
     }
     span {
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background-color: aqua;
+
       top: 2px;
     }
   }

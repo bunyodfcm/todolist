@@ -3,21 +3,25 @@ export const JobsData = [
     id: 1,
     name: "work",
     color: "#CBC4FF",
+    active: false
   },
   {
     id: 2,
     name: "study",
     color: "#d1e5f7",
+    active: false
   },
   {
     id: 3,
     name: "entertainment",
     color: "#FFC3C6",
+    active: false
   },
   {
     id: 4,
     name: "family",
     color: "#daf2d6",
+    active: false
   },
 ];
 export const TaskData = [

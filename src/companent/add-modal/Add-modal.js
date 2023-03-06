@@ -3,14 +3,10 @@ import { JobsData } from "../../utilist/data";
 import WorkBtn from "../works-btn/Work-btn";
 import "./Add-modal.scss";
 const AddModal = ({ onClose }) => {
-  const a = useRef();
   const handly = () => {
     onClose();
   };
-  const addBgColor = () => {
-    // console.log(a.current.classList.add("checkbox-bg"));
-    console.log(a);
-  };
+  
   return (
     <div className="add-modal" onClick={handly}>
       <form className="add-modal__body" onClick={(e) => e.stopPropagation()}>

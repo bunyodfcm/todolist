@@ -1,14 +1,18 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Work-btn.scss";
 
 const WorkBtn = (props) => {
-  // const [] = props
+  const [toggleBgBtn, setToggleBgBtn] = useState(false);
+  const addBgColor = (e) => {
+    e.preventDefault();
+    return setToggleBgBtn((prev) => !prev);
+  };
   return (
     <label
-      className="add-modal__checkbox checkbox-bg"
-      // key={p}
-      // ref={a}
-      // onClick={addBgColor}
+      className={
+        toggleBgBtn ? "checkbox-bg add-modal__checkbox" : "add-modal__checkbox"
+      }
+      onClick={addBgColor}
     >
       <input type="checkbox" />
       <span style={{ backgroundColor: props.color }}></span>

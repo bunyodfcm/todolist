@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { JobsData } from "../../../utilist/data";
 import WorkBtn from "../../works-btn/Work-btn";
 import "./Sidebar.scss";
 
 const Saidbar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar" >
       {JobsData.map((data, index) => (
-        <WorkBtn name={data.name} color={data.color} key={index} />
+        
+        <WorkBtn
+          name={data.name}
+          color={data.color}
+          key={index}
+        />
       ))}
       <div className="hide-element">
         <input type="checkbox" id="hide-element" />

@@ -7,7 +7,7 @@ import List from "../list/List";
 import "./Main.scss";
 import Saidbar from "./sidebar/Sidebar";
 const Main = () => {
-  const [modalActive, setModalActive] = useState(true);
+  const [modalActive, setModalActive] = useState(false);
 
   const onClose = () => {
     setModalActive(false);

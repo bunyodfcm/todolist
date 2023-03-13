@@ -1,12 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
+import { useGetWorkContext } from "../../context/Work-context";
 import "./Work-btn.scss";
 
 const WorkBtn = (props) => {
+  const myContext = useGetWorkContext();
   const [toggleBgBtn, setToggleBgBtn] = useState(false);
   const addBgColor = (e) => {
     e.preventDefault();
-    return setToggleBgBtn((prev) => !prev);
+    setToggleBgBtn((prev) => !prev);
+    if (!toggleBgBtn && props.saidbar) {
+      myContext.focusBtn.push(props.btnId);
+    } else if (toggleBgBtn && props.saidbar) {
+      const result = myContext.focusBtn.filter((x) => x !== props.btnId);
+      myContext.useFocusBtn(result);
+    }
   };
+  console.log(myContext);
   return (
     <label
       className={

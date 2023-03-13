@@ -9,6 +9,8 @@ const Saidbar = () => {
       {JobsData.map((data, index) => (
         
         <WorkBtn
+          saidbar = {true}
+          btnId = {data.id}
           name={data.name}
           color={data.color}
           key={index}

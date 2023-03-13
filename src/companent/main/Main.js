@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import AddIcon from "../../assets/companent-icon/Add-icon";
+import { useGetWorkContext } from "../../context/Work-context";
 import { TaskData } from "../../utilist/data";
 import AddModal from "../add-modal/Add-modal";
 import List from "../list/List";
@@ -8,6 +9,9 @@ import "./Main.scss";
 import Saidbar from "./sidebar/Sidebar";
 const Main = () => {
   const [modalActive, setModalActive] = useState(false);
+  const myContext = useGetWorkContext()
+  console.log(myContext);
+  
 
   const onClose = () => {
     setModalActive(false);

@@ -15,7 +15,7 @@ const WorkBtn = (props) => {
       myContext.useFocusBtn(result);
     }
   };
-  console.log(myContext);
+  // console.log(myContext);
   return (
     <label
       className={

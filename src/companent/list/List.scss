@@ -1,3 +1,7 @@
+.line-through{
+  text-decoration: line-through ;
+}
+
 .list {
   width: 100%;
   height: auto;
@@ -53,6 +57,7 @@
       display: flex;
       gap: 4px;
       align-items: center;
+      text-decoration: none;
       input[type="checkbox"] {
         display: none;
         &:checked + span:before {

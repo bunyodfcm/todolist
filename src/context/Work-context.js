@@ -7,19 +7,15 @@ export function useGetWorkContext() {
 }
 
 const WorkContext = ({ children }) => {
-    
   const [focusBtn, useFocusBtn] = useState([]);
-  console.log(focusBtn);
-
-  const useFocusBtnChange =(array)=>{
-    
-    useFocusBtn(array)
-  }
+  const useFocusBtnChange = (array) => {
+    useFocusBtn((prev) => prev.concat(array));
+  };
   return (
     <div>
-      <MyContext.Provider value={{ focusBtn, useFocusBtnChange,useFocusBtn }}>
+      <MyContext.Provider value={{ focusBtn, useFocusBtnChange, useFocusBtn }}>
         {children}
-      </MyContext.Provider  >
+      </MyContext.Provider>
     </div>
   );
 };

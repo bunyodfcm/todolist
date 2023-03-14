@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./List.scss";
 import EllipsisHorizontalIcon from "../../assets/companent-icon/EllipsisHorizontalIcon";
 import { JobsData } from "../../utilist/data";
 import Edit from "./edit/Edit";
-import { useGetWorkContext } from "../../context/Work-context";
+// import { useGetWorkContext } from "../../context/Work-context";
 
 const List = (props) => {
-  const newAd = useGetWorkContext();
+  // const newAd = useGetWorkContext();
   const [listEditChange, setListEditChange] = useState(false);
   document.addEventListener("click", () => setListEditChange(false));
   const selectItem = (id, arr) => {
@@ -17,8 +17,20 @@ const List = (props) => {
     e.stopPropagation();
     setListEditChange(true);
   };
+  const [activeDone, setActiveDone] = useState(props.done);
+  const list = useRef();
+  useEffect(() => {
+    if (activeDone) {
+      list.current.classList.add("line-through");
+    }else{
+      list.current.classList.remove("line-through");
+    }
+  }, [activeDone]);
+  const textDecorationToggle = () => {
+    setActiveDone(prev=>!prev)
+  };
   return (
-    <div className="list">
+    <div className="list" ref={list}>
       <div className="list-header">
         <p>{props.title}</p>
         <EllipsisHorizontalIcon
@@ -41,7 +53,7 @@ const List = (props) => {
           ))}
         </div>
         <label className="list-footer__right">
-          <input type="checkbox" />
+          <input type="checkbox" onClick={textDecorationToggle} defaultChecked={activeDone} />
           <span></span>
           Done
         </label>

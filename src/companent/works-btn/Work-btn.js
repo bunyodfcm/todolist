@@ -9,13 +9,17 @@ const WorkBtn = (props) => {
     e.preventDefault();
     setToggleBgBtn((prev) => !prev);
     if (!toggleBgBtn && props.saidbar) {
-      myContext.focusBtn.push(props.btnId);
+      myContext.useFocusBtn((prev) => [...prev, props.btnId]);
     } else if (toggleBgBtn && props.saidbar) {
       const result = myContext.focusBtn.filter((x) => x !== props.btnId);
       myContext.useFocusBtn(result);
     }
+    if (toggleBgBtn && props.modal) {
+      props.workSelect(props.id, true);
+    } else if ((toggleBgBtn && props.modal, false)) {
+      props.workSelect(props.id);
+    }
   };
-  // console.log(myContext);
   return (
     <label
       className={

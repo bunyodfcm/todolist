@@ -14,6 +14,7 @@ const Main = () => {
 
   const onClose = () => {
     setModalActive(false);
+    myContext.setWorksSelectBtn([])
   };
 
   const drawList = () => {

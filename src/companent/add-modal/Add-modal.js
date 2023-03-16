@@ -1,29 +1,39 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
+import { useGetWorkContext } from "../../context/Work-context";
 import { JobsData } from "../../utilist/data";
 import WorkBtn from "../works-btn/Work-btn";
 import "./Add-modal.scss";
+
 const AddModal = ({ onClose }) => {
+  const idGeneration = useId();
+
+  const titleRef = useRef();
+  const descriptionRef = useRef();
+  const workContext = useGetWorkContext();
   const handly = () => {
     onClose();
   };
-  const titleRef = useRef();
-  const descriptionRef = useRef();
-  const [worksSelectModal, setWorksSelectModal] = useState([]);
-  const workSelect = (element, add) => {
-    console.log('xasax');
-    if (add) {
-      setWorksSelectModal(prev=> [{...prev}, element])
-    }else if (!add) {
-      const result = worksSelectModal.filter((x) => x !== element);
-      return result
+  const [myData, setMyData] = useState([]);
+
+  const addLocalStorage = () => {
+    const oldValue = JSON.parse(localStorage.getItem("toDoData"));
+    console.log(oldValue);
+    const a = {
+      id: idGeneration,
+      taskTitle: titleRef.current.value,
+      taskText: descriptionRef.current.value,
+      JobsDataId: workContext.worksSelectBtn,
+      done: false,
+    };
+    if (oldValue) {
+      localStorage.setItem("toDoData", JSON.stringify([a]));
+    }else{
+      localStorage.setItem("toDoData", JSON.stringify([...oldValue, a]));
     }
-  };
-  const aa = () => {
     onClose();
-    console.log(titleRef.current.value);
-    console.log(worksSelectModal);
-    console.log(descriptionRef.current.value);
   };
+
+  // console.log(JSON.parse(localStorage.getItem("toDoData")));
   return (
     <div className="add-modal" onClick={handly}>
       <form className="add-modal__body" onClick={(e) => e.stopPropagation()}>
@@ -31,7 +41,7 @@ const AddModal = ({ onClose }) => {
           <button type="reset" onClick={handly} className="add-modal__cancel">
             Cancel
           </button>
-          <button type="button" className="btn" onClick={aa}>
+          <button type="button" className="btn" onClick={addLocalStorage}>
             Add
           </button>
         </div>
@@ -61,7 +71,7 @@ const AddModal = ({ onClose }) => {
           {JobsData.map((item, index) => (
             <WorkBtn
               modal={true}
-              workSelect={workSelect}
+              // workSelect={workSelect}
               id={item.id}
               name={item.name}
               color={item.color}

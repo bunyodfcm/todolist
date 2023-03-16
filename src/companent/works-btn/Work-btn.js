@@ -4,6 +4,7 @@ import "./Work-btn.scss";
 
 const WorkBtn = (props) => {
   const myContext = useGetWorkContext();
+  // console.log(myContext.workSelectModal);
   const [toggleBgBtn, setToggleBgBtn] = useState(false);
   const addBgColor = (e) => {
     e.preventDefault();
@@ -14,10 +15,10 @@ const WorkBtn = (props) => {
       const result = myContext.focusBtn.filter((x) => x !== props.btnId);
       myContext.useFocusBtn(result);
     }
-    if (toggleBgBtn && props.modal) {
-      props.workSelect(props.id, true);
-    } else if ((toggleBgBtn && props.modal, false)) {
-      props.workSelect(props.id);
+    if (!toggleBgBtn && props.modal) {
+      myContext.workSelectModal(props.id, true);
+    } else if ((toggleBgBtn && props.modal)) {
+      myContext.workSelectModal(props.id, false);
     }
   };
   return (

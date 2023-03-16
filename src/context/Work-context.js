@@ -8,12 +8,26 @@ export function useGetWorkContext() {
 
 const WorkContext = ({ children }) => {
   const [focusBtn, useFocusBtn] = useState([]);
-  const useFocusBtnChange = (array) => {
-    useFocusBtn((prev) => prev.concat(array));
+  const [worksSelectBtn, setWorksSelectBtn] = useState([]);
+  const workSelectModal = (element, add) => {
+    if (add) {
+      setWorksSelectBtn((prev) => [...prev, element]);
+    } else if (!add) {
+      setWorksSelectBtn((prev) => [...prev].filter((x) => x !== element));
+    }
   };
+
   return (
     <div>
-      <MyContext.Provider value={{ focusBtn, useFocusBtnChange, useFocusBtn }}>
+      <MyContext.Provider
+        value={{
+          focusBtn,
+          useFocusBtn,
+          workSelectModal,
+          worksSelectBtn,
+          setWorksSelectBtn,
+        }}
+      >
         {children}
       </MyContext.Provider>
     </div>

@@ -17,20 +17,26 @@ const WorkContext = ({ children }) => {
     }
   };
 
+  const [editModal, setEditModal] = useState(false);
+  const [editModalData, setEditModalData] = useState(null);
+  // console.log(editModalData);
+
   return (
-    <div>
-      <MyContext.Provider
-        value={{
-          focusBtn,
-          useFocusBtn,
-          workSelectModal,
-          worksSelectBtn,
-          setWorksSelectBtn,
-        }}
-      >
-        {children}
-      </MyContext.Provider>
-    </div>
+    <MyContext.Provider
+      value={{
+        focusBtn,
+        useFocusBtn,
+        workSelectModal,
+        worksSelectBtn,
+        setWorksSelectBtn,
+        editModal,
+        setEditModal,
+        setEditModalData,
+        editModalData,
+      }}
+    >
+      {children}
+    </MyContext.Provider>
   );
 };
 

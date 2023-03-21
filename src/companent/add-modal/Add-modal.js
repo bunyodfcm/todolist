@@ -5,15 +5,24 @@ import WorkBtn from "../works-btn/Work-btn";
 import "./Add-modal.scss";
 
 const AddModal = ({ onClose }) => {
+  const workContext = useGetWorkContext();
   const idGeneration = useId();
+
+  const infoChanged = workContext.editModalData.thisData;
+  useEffect(() => {
+    if (workContext.editModal) {
+      titleRef.current.value = infoChanged.title;
+      descriptionRef.current.value = infoChanged.text;
+    }
+  }, []);
+  console.log(infoChanged.JobsDataId);
 
   const titleRef = useRef();
   const descriptionRef = useRef();
-  const workContext = useGetWorkContext();
   const handly = () => {
     onClose();
   };
-  const [myData, setMyData] = useState([]);
+  // const [myData, setMyData] = useState([]);
 
   const addLocalStorage = () => {
     const oldValue = JSON.parse(localStorage.getItem("toDoData"));
@@ -25,9 +34,9 @@ const AddModal = ({ onClose }) => {
       JobsDataId: workContext.worksSelectBtn,
       done: false,
     };
-    if (oldValue) {
+    if (!oldValue) {
       localStorage.setItem("toDoData", JSON.stringify([a]));
-    }else{
+    } else {
       localStorage.setItem("toDoData", JSON.stringify([...oldValue, a]));
     }
     onClose();
@@ -71,7 +80,7 @@ const AddModal = ({ onClose }) => {
           {JobsData.map((item, index) => (
             <WorkBtn
               modal={true}
-              // workSelect={workSelect}
+              editWorkSelect={infoChanged.JobsDataId}
               id={item.id}
               name={item.name}
               color={item.color}

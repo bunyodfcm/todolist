@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetWorkContext } from "../../context/Work-context";
 import "./Work-btn.scss";
 
 const WorkBtn = (props) => {
   const myContext = useGetWorkContext();
-  // console.log(myContext.workSelectModal);
+  console.log(props, 'asas');
   const [toggleBgBtn, setToggleBgBtn] = useState(false);
+  // useEffect(()=>{
+
+  // })
   const addBgColor = (e) => {
     e.preventDefault();
     setToggleBgBtn((prev) => !prev);
@@ -17,7 +20,7 @@ const WorkBtn = (props) => {
     }
     if (!toggleBgBtn && props.modal) {
       myContext.workSelectModal(props.id, true);
-    } else if ((toggleBgBtn && props.modal)) {
+    } else if (toggleBgBtn && props.modal) {
       myContext.workSelectModal(props.id, false);
     }
   };
@@ -28,7 +31,7 @@ const WorkBtn = (props) => {
       }
       onClick={addBgColor}
     >
-      <input type="checkbox" />
+      <input type="checkbox" defaultChecked={toggleBgBtn} />
       <span style={{ backgroundColor: props.color }}></span>
       {props.name}
     </label>

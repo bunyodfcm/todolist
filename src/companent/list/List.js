@@ -37,7 +37,7 @@ const List = (props) => {
           className="list-header__icon"
           onClick={(e) => appearListEdit(e)}
         />
-        {listEditChange ? <Edit /> : ""}
+        {listEditChange ? <Edit thisData={props}/> : ""}
       </div>
       <div className="list-body">
         <p>{props.text}</p>

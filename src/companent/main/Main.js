@@ -2,35 +2,43 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import AddIcon from "../../assets/companent-icon/Add-icon";
 import { useGetWorkContext } from "../../context/Work-context";
-import { TaskData } from "../../utilist/data";
 import AddModal from "../add-modal/Add-modal";
 import List from "../list/List";
 import "./Main.scss";
 import Saidbar from "./sidebar/Sidebar";
 const Main = () => {
-  const [modalActive, setModalActive] = useState(false);
-
   const myContext = useGetWorkContext();
+  const TaskData = JSON.parse(localStorage.getItem("toDoData"));
 
+  const [modalActive, setModalActive] = useState(false);
   const onClose = () => {
     setModalActive(false);
-    myContext.setWorksSelectBtn([])
+    myContext.setEditModal(false)
+    myContext.setWorksSelectBtn([]);
+    myContext.setEditModalData(null);
+  };
+  const toggleModal = () => {
+    if (modalActive) {
+      return <AddModal onClose={onClose} />;
+    }else if (myContext.editModal) {
+      return <AddModal onClose={onClose} />;
+    }
   };
 
   const drawList = () => {
     if (myContext.focusBtn.length === 0) {
-      return TaskData.map((data) => (
+      return TaskData.map((data, index) => (
         <List
           done={data.done}
           id={data.id}
-          key={data.id}
+          key={index}
           title={data.taskTitle}
           text={data.taskText}
           JobsDataId={data.JobsDataId}
         />
       ));
     } else {
-      const result = TaskData.filter((data, i) => {
+      const result = TaskData.filter((data) => {
         const result1 = data.JobsDataId.filter((item) => {
           const result2 = myContext.focusBtn.filter((x) => x === item);
           if (result2.length !== 0) {
@@ -41,11 +49,11 @@ const Main = () => {
         });
         return result1.length !== 0 ? true : false;
       });
-      return result.map((data) => (
+      return result.map((data, index) => (
         <List
           done={data.done}
           id={data.id}
-          key={data.id}
+          key={index}
           title={data.taskTitle}
           text={data.taskText}
           JobsDataId={data.JobsDataId}
@@ -66,7 +74,8 @@ const Main = () => {
               className="add-icon"
               onClick={() => setModalActive(true)}
             />
-            {modalActive ? <AddModal onClose={onClose} /> : ""}
+            {/* {modalActive ? <AddModal onClose={onClose} /> : ""} */}
+            {toggleModal()}
           </div>
           <div className="main-body">
             <div className="main-sidebar">

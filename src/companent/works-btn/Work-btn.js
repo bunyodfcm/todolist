@@ -4,11 +4,25 @@ import "./Work-btn.scss";
 
 const WorkBtn = (props) => {
   const myContext = useGetWorkContext();
-  console.log(props, 'asas');
+  
+  // if (myContext.editModalData !== null) {
+  //   console.log('salom');
+  // }else{
+  //   console.log('xx');
+  // }
+
+  console.log(props, 'props');
+  
+  // const editModalJobsId = myContext.editModalData.thisData.JobsDataId 
+  
   const [toggleBgBtn, setToggleBgBtn] = useState(false);
+  
   // useEffect(()=>{
 
   // })
+  // console.log(myContext);
+
+
   const addBgColor = (e) => {
     e.preventDefault();
     setToggleBgBtn((prev) => !prev);

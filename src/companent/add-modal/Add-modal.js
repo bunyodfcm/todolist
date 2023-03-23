@@ -15,8 +15,9 @@ const AddModal = ({ onClose }) => {
       descriptionRef.current.value = infoChanged.text;
     }
   }, []);
-  console.log(infoChanged.JobsDataId);
 
+  // console.log(infoChanged.JobsDataId, 'aaaaa');
+  
   const titleRef = useRef();
   const descriptionRef = useRef();
   const handly = () => {
@@ -26,7 +27,7 @@ const AddModal = ({ onClose }) => {
 
   const addLocalStorage = () => {
     const oldValue = JSON.parse(localStorage.getItem("toDoData"));
-    console.log(oldValue);
+    // console.log(oldValue);
     const a = {
       id: idGeneration,
       taskTitle: titleRef.current.value,

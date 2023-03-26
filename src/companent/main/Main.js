@@ -8,19 +8,20 @@ import "./Main.scss";
 import Saidbar from "./sidebar/Sidebar";
 const Main = () => {
   const myContext = useGetWorkContext();
-  const TaskData = JSON.parse(localStorage.getItem("toDoData"));
 
+  const TaskDataa = JSON.parse(localStorage.getItem("toDoData"));
+  const TaskData = TaskDataa;
   const [modalActive, setModalActive] = useState(false);
   const onClose = () => {
     setModalActive(false);
-    myContext.setEditModal(false)
+    myContext.setEditModal(false);
     myContext.setWorksSelectBtn([]);
     myContext.setEditModalData(null);
   };
   const toggleModal = () => {
     if (modalActive) {
       return <AddModal onClose={onClose} />;
-    }else if (myContext.editModal) {
+    } else if (myContext.editModal) {
       return <AddModal onClose={onClose} />;
     }
   };
